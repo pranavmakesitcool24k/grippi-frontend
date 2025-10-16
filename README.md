@@ -13,7 +13,7 @@ This is the Next.js frontend for the Campaign Analytics Dashboard. It fetches ca
 1. Clone the repository
 
 ```
-git clone https://github.com/yourusername/grippi-frontend.git
+git clone https://github.com/pranavmakesitcool24k/grippi-frontend.git
 cd grippi-frontend
 ```
 
