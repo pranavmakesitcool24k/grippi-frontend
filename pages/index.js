@@ -6,23 +6,25 @@ export default function Home() {
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchCampaigns = async () => {
-      setLoading(true);
-      try {
-        let url = "http://localhost:8000/campaigns";
-        if (status) url += `?status=${status}`;
-        const res = await fetch(url);
-        const data = await res.json();
-        setCampaigns(data);
-      } catch (err) {
-        console.error("Error fetching campaigns:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchCampaigns();
-  }, [status]);
+useEffect(() => {
+  const fetchCampaigns = async () => {
+    setLoading(true);
+    try {
+      let url = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000";
+      url += "/campaigns";
+      if (status) url += `?status=${status}`;
+      const res = await fetch(url);
+      const data = await res.json();
+      setCampaigns(data);
+    } catch (err) {
+      console.error("Error fetching campaigns:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+  fetchCampaigns();
+}, [status]);
+
 
   return (
     <div className="app-container">
